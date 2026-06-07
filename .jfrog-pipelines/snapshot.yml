@@ -37,8 +37,7 @@ pipelines:
             - export SNAPSHOT_VERSION=`npm pkg get version | sed 's/"//g'`-`git rev-parse --short HEAD`
 
             # Configure JFrog CLI
-            - JFROG_CLI_VERSION=$(cat .github/jfrog-cli-version)
-            - curl -fL https://install-cli.jfrog.io | sh -s -- $JFROG_CLI_VERSION
+            - curl -fL https://install-cli.jfrog.io | sh
             - jf c rm --quiet
             - jf c add internal --url=$int_ecosys_entplus_deployer_url --user=$int_ecosys_entplus_deployer_user --password=$int_ecosys_entplus_deployer_apikey
             - jf npmc --repo-resolve ecosys-npm-remote
